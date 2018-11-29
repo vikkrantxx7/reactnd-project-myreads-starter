@@ -16,26 +16,30 @@ class BookSearch extends Component {
         this.setState({
             query
         })
-        BookAPI.search(query).then(books => {
-                this.setState({
-                    books: books.map(book => {
-                        this.state.getAllBooks.every(getBook => {
-                            if (getBook.id === book.id) {
-                                book.shelf = getBook.shelf;
-                                return false
-                            }
-                            book.shelf = "none"
-                            return true
+        if(query !== "") {
+            BookAPI.search(query).then(books => {
+                    this.setState({
+                        books: books.map(book => {
+                            this.state.getAllBooks.every(getBook => {
+                                if (getBook.id === book.id) {
+                                    book.shelf = getBook.shelf;
+                                    return false
+                                }
+                                book.shelf = "none"
+                                return true
+                            })
+                            return book
                         })
-				        return book
-				    })
-				})
-		}).catch(() => {
-            this.setState({
-                books: []
+                    })
+            }).catch(() => {
+                this.setState({
+                    books: []
+                })
+                console.error('No Books returned for the supplied query')
             })
-            console.error('No Books returned for the supplied query')
-        })
+        } else {
+            console.error('Please enter a valid query')
+        }
     }
 
     //updates the book's shelf property on server
