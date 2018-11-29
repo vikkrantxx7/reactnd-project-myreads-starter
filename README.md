@@ -33,7 +33,7 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 ### Dependencies
 
-[create react app](https://github.com/facebook/create-react-app)- Used to bootstrap the whole project.
+[create react app](https://github.com/facebook/create-react-app)- Used to bootstrap the whole project.<br>
 [react router dom](https://reacttraining.com/react-router/web/guides/quick-start)- Used for routing functionality.
 
 ### Contributing
