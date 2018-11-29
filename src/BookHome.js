@@ -13,8 +13,9 @@ class BookHome extends Component {
 
     //updates book's shelf property on the server
 	updateShelf = (book, shelf) => {
-        BookAPI.update(book, shelf)
+        BookAPI.update(book, shelf).then(() => {
         this.updateState()
+        })
     }
 
     //updates the state variables to re-render the component with updates
